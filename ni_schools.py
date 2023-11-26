@@ -27,7 +27,7 @@ data_load_state.text("Data Loaded!")
 # Inspect the raw data.
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
-    st.write(data)
+    st.write(data.iloc[:, :8])
 
 # Plot data on a map
 st.subheader(f'Map of all schools')
@@ -76,11 +76,12 @@ st.pydeck_chart(r)
 
 # Cloropleth map
 gdf = load_geo_data()
+display_cols = ['FinalR_DEA', 'pupils_total_2022_23', 'pct_protestant', 'pct_catholic', 'pct_other']
 
 # Inspect the raw data.
 if st.checkbox('Show raw geo data'):
     st.subheader('Raw geo data')
-    st.write(gdf[['FinalR_DEA', 'pupils_formatted']])
+    st.write(gdf[display_cols])
 
 layer = pdk.Layer(
     'GeoJsonLayer',
