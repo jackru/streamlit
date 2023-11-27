@@ -8,6 +8,7 @@ st.title('NI primary school data')
 
 DATA_LOC = './ni_schools.csv'
 GEOJSON_PATH = './dea_data_simple.json'
+INTEGR_PATH = './lgd_data_simple.geojson'
 
 @st.cache_data
 def load_data(dummy=8):
@@ -17,6 +18,11 @@ def load_data(dummy=8):
 @st.cache_data
 def load_geo_data(dummy=8):
     data = gpd.read_file(GEOJSON_PATH)
+    return data
+
+@st.cache_data
+def load_integr_data(dummy=8):
+    data = gpd.read_file(INTEGR_PATH)
     return data
 
 # Explain the source of the data and link to it
@@ -91,30 +97,46 @@ st.pydeck_chart(r)
 #        size='pupils_total_2022_23'
 #        )
 
-# Cloropleth map
-gdf = load_geo_data()
-display_cols = ['FinalR_DEA', 'pupils_total_2022_23', 'pct_protestant', 'pct_catholic', 'pct_other']
+# Integrated places per LGD chloropleth
+integr_places = load_integr_data()
+display_cols = ['LGDNAME', 'Controlled', 'Maintained', 'Integrated',
+                'Total', 'Integrated_Percent']
 
 # Inspect the raw data.
-if st.checkbox('Show DEA aggregate data'):
-    st.subheader('DEA aggregate data')
-    st.write(gdf[display_cols])
+if st.checkbox('Show LGD aggregate data'):
+    st.subheader('LGD aggregate data')
+    st.write(integr_places[display_cols])
 
-layer = pdk.Layer(
+integr_places['Total'] = integr_places['Total'].apply(lambda x: f'{x:,}')
+integr_places['Controlled'] = integr_places['Controlled'].apply(lambda x: f'{x:,}')
+integr_places['Maintained'] = integr_places['Maintained'].apply(lambda x: f'{x:,}')
+integr_places['Integrated'] = integr_places['Integrated'].apply(lambda x: f'{x:,}')
+
+lgd_layer = pdk.Layer(
     'GeoJsonLayer',
-    gdf,
+    integr_places,
     opacity=0.8,
     stroked=True,
     filled=True,
     extruded=False,
-    get_fill_color='[100, (pupils_total_2022_23 / 5000) * 255, (pupils_total_2022_23 / 5000) * 200]',
+    get_fill_color=('[Integrated_Fraction * 600, '
+                    'Integrated_Fraction * 900, '
+                    'Integrated_Fraction * 2400]'),
     get_line_color=[200, 200, 200, 150],
     line_width_min_pixels=1,
     pickable=True,
 )
 
-tooltip1 = {
-    'html': '<b>DEA:</b> {FinalR_DEA}<br><b>Total pupils:</b> {pupils_formatted}',
+tt_lgd = '<b>LGD:</b> {LGDNAME}'
+tt_num_pupils = '<b>Total Places:</b> {Total}'
+tt_num_contr = '<b>Controlled:</b> {Controlled}'
+tt_num_maint = '<b>Maintained:</b> {Maintained}'
+tt_num_integr = '<b>Integrated:</b> {Integrated}'
+tt_perc_integr = '<b>Percent Integrated:</b> {Integrated_Percent}'
+
+tooltip0 = {
+    'html': '<br>'.join([tt_lgd, tt_num_pupils, tt_num_contr,
+                         tt_num_maint, tt_num_integr, tt_perc_integr]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
@@ -126,10 +148,50 @@ tooltip1 = {
 
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
 
-r1 = pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip=tooltip1)
+r0 = pdk.Deck(layers=[lgd_layer], initial_view_state=view_state, tooltip=tooltip0)
 
-st.subheader(f'Total pupils per DEA')
-st.pydeck_chart(r1)
+st.subheader(f'Integrated Places per LGD')
+st.pydeck_chart(r0)
+
+# DEA level Cloropleth maps
+gdf = load_geo_data()
+display_cols = ['FinalR_DEA', 'pupils_total_2022_23', 'pct_protestant', 'pct_catholic', 'pct_other']
+
+# Inspect the raw data.
+if st.checkbox('Show DEA aggregate data'):
+    st.subheader('DEA aggregate data')
+    st.write(gdf[display_cols])
+
+# dea_layer = pdk.Layer(
+#     'GeoJsonLayer',
+#     gdf,
+#     opacity=0.8,
+#     stroked=True,
+#     filled=True,
+#     extruded=False,
+#     get_fill_color='[100, (pupils_total_2022_23 / 5000) * 255, (pupils_total_2022_23 / 5000) * 200]',
+#     get_line_color=[200, 200, 200, 150],
+#     line_width_min_pixels=1,
+#     pickable=True,
+# )
+
+# tooltip1 = {
+#     'html': '<b>DEA:</b> {FinalR_DEA}<br><b>Total pupils:</b> {pupils_formatted}',
+#     'style': {
+#         'backgroundColor': 'steelblue',
+#         'color': 'white',
+#         'border': '1px solid white',
+#         'fontSize': '12px',
+#         'padding': '5px',
+#     }
+# }
+
+# view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
+
+# r1 = pdk.Deck(layers=[dea_layer], initial_view_state=view_state, tooltip=tooltip1)
+
+# st.subheader(f'Total pupils per DEA')
+# st.pydeck_chart(r1)
 
 rel_layer = pdk.Layer(
     'GeoJsonLayer',
