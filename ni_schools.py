@@ -130,7 +130,9 @@ rel_layer = pdk.Layer(
     stroked=True,
     filled=True,
     extruded=False,
-    get_fill_color='[pct_protestant_num * 255, pct_catholic_num * 255, pct_other_num * 255]',
+    get_fill_color=('[pct_protestant_num * 150 + 50, '
+                    'pct_catholic_num * 150 + 50, '
+                    'pct_other_num * 400]'),
     get_line_color=[200, 200, 200, 150],
     line_width_min_pixels=1,
     pickable=True,
