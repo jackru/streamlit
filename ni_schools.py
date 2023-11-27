@@ -38,8 +38,8 @@ view_cols = [
     'catholic',
     'other',
 ]
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
+if st.checkbox('Show schools data'):
+    st.subheader('Schools data')
     st.write(data[view_cols])
 
 # Plot data on a map
@@ -73,11 +73,11 @@ tooltip = {
                          tt_num_protestant, tt_num_catholic, tt_num_other,
                          tt_source]),
     'style': {
-        'backgroundColor': 'beige',
-        'color': 'maroon',
+        'backgroundColor': 'steelblue',
+        'color': 'white',
         'fontSize': '12px',
         'padding': '5px',
-        'border': '1px solid maroon'
+        'border': '1px solid white',
     }
 }
 
@@ -96,8 +96,8 @@ gdf = load_geo_data()
 display_cols = ['FinalR_DEA', 'pupils_total_2022_23', 'pct_protestant', 'pct_catholic', 'pct_other']
 
 # Inspect the raw data.
-if st.checkbox('Show raw geo data'):
-    st.subheader('Raw geo data')
+if st.checkbox('Show DEA aggregate data'):
+    st.subheader('DEA aggregate data')
     st.write(gdf[display_cols])
 
 layer = pdk.Layer(
@@ -118,7 +118,9 @@ tooltip1 = {
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
-        'border': '1px solid white'
+        'border': '1px solid white',
+        'fontSize': '12px',
+        'padding': '5px',
     }
 }
 
@@ -155,7 +157,9 @@ tooltip2 = {
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
-        'border': '1px solid white'
+        'border': '1px solid white',
+        'fontSize': '12px',
+        'padding': '5px',
     }
 }
 
@@ -163,5 +167,5 @@ view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pit
 
 r2 = pdk.Deck(layers=[rel_layer], initial_view_state=view_state, tooltip=tooltip2)
 
-st.subheader(f'Self-designated religious mix per DEA')
+st.subheader(f'Religious mix per DEA')
 st.pydeck_chart(r2)
