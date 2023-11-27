@@ -10,12 +10,12 @@ DATA_LOC = './ni_schools.csv'
 GEOJSON_PATH = './dea_data_simple.json'
 
 @st.cache_data
-def load_data(nrows=None):
-    data = pd.read_csv(DATA_LOC, nrows=nrows)
+def load_data(dummy=8):
+    data = pd.read_csv(DATA_LOC)
     return data
 
 @st.cache_data
-def load_geo_data(dummy=7):
+def load_geo_data(dummy=8):
     data = gpd.read_file(GEOJSON_PATH)
     return data
 
