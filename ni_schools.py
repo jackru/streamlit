@@ -25,9 +25,18 @@ data = load_data()
 data_load_state.text("Data Loaded!")
 
 # Inspect the raw data.
+view_cols = [
+    'name',
+    'postcode',
+    'management',
+    'pupils_total_2022_23',
+    'protestant',
+    'catholic',
+    'other',
+]
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
-    st.write(data.iloc[:, :8])
+    st.write(data[view_cols])
 
 # Plot data on a map
 st.subheader(f'Map of all schools')
@@ -47,6 +56,7 @@ sch_layer = pdk.Layer(
 )
 
 tt_name = '<b>Name:</b> {name}'
+tt_manag = '<b>Management:</b> {management}'
 tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
 tt_num_protestant = '<b>Protestant:</b> {protestant}'
 tt_num_catholic = '<b>Catholic:</b> {catholic}'
@@ -54,7 +64,8 @@ tt_num_other = '<b>Other:</b> {other}'
 
 # Define the tooltip
 tooltip = {
-    'html': '<br>'.join([tt_name, tt_num_pupils, tt_num_protestant, tt_num_catholic, tt_num_other]),
+    'html': '<br>'.join([tt_name, tt_manag, tt_num_pupils,
+                         tt_num_protestant, tt_num_catholic, tt_num_other]),
     'style': {
         'backgroundColor': 'beige',
         'color': 'maroon',
