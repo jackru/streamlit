@@ -19,6 +19,10 @@ def load_geo_data(dummy=8):
     data = gpd.read_file(GEOJSON_PATH)
     return data
 
+# Explain the source of the data and link to it
+st.markdown("This site visualises publicly available data from the N.I. Department of Education's"
+" [Schools Plus](https://www.education-ni.gov.uk/services/schools-plus) website.")
+
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
 data = load_data()
@@ -61,11 +65,13 @@ tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
 tt_num_protestant = '<b>Protestant:</b> {protestant}'
 tt_num_catholic = '<b>Catholic:</b> {catholic}'
 tt_num_other = '<b>Other:</b> {other}'
+tt_source = '<b>Source:</b> Schools Plus NI'
 
 # Define the tooltip
 tooltip = {
     'html': '<br>'.join([tt_name, tt_manag, tt_num_pupils,
-                         tt_num_protestant, tt_num_catholic, tt_num_other]),
+                         tt_num_protestant, tt_num_catholic, tt_num_other,
+                         tt_source]),
     'style': {
         'backgroundColor': 'beige',
         'color': 'maroon',
