@@ -48,9 +48,9 @@ sch_layer = pdk.Layer(
 
 tt_name = '<b>Name:</b> {name}'
 tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
-tt_num_protestant = '<b>Protestant:</b> {religion_protestant_est_mid_2022_23}'
-tt_num_catholic = '<b>Catholic:</b> {religion_catholic_est_mid_2022_23}'
-tt_num_other = '<b>Other:</b> {religion_other_est_mid_2022_23}'
+tt_num_protestant = '<b>Protestant:</b> {protestant}'
+tt_num_catholic = '<b>Catholic:</b> {catholic}'
+tt_num_other = '<b>Other:</b> {other}'
 
 # Define the tooltip
 tooltip = {
