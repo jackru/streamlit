@@ -26,8 +26,13 @@ def load_integr_data(dummy=8):
     return data
 
 # Explain the source of the data and link to it
-st.markdown("This site visualises publicly available data from 2022/23 from the N.I. Department of Education's"
-" [Schools Plus](https://www.education-ni.gov.uk/services/schools-plus) website.")
+survey_link=('https://view.publitas.com/integrated-education-fund/'
+             'iefni-attitudinal-poll-may-summary-report-final/page/1')
+
+st.markdown("This site visualises publicly available data from 2022/23 from the "
+            "N.I. Department of Education's "
+            "[Schools Plus](https://www.education-ni.gov.uk/services/schools-plus) website "
+            f"and a LucidTalk [survey]({survey_link}) of parents in March 2023.")
 
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
@@ -149,9 +154,6 @@ tooltip0 = {
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
 
 r0 = pdk.Deck(layers=[lgd_layer], initial_view_state=view_state, tooltip=tooltip0)
-
-survey_link=('https://view.publitas.com/integrated-education-fund/'
-             'iefni-attitudinal-poll-may-summary-report-final/page/1')
 
 st.subheader(f'Integrated Places per LGD')
 st.markdown('Integrated Supply vs. Demand. Demand is from a LucidTalk [survey]'
