@@ -26,7 +26,7 @@ def load_integr_data(dummy=8):
     return data
 
 # Explain the source of the data and link to it
-st.markdown("This site visualises publicly available data from the N.I. Department of Education's"
+st.markdown("This site visualises publicly available data from 2022/23 from the N.I. Department of Education's"
 " [Schools Plus](https://www.education-ni.gov.uk/services/schools-plus) website.")
 
 # Create a text element and let the reader know the data is loading.
