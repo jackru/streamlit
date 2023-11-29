@@ -114,7 +114,8 @@ integr_places['Total'] = integr_places['Total'].apply(lambda x: f'{x:,}')
 integr_places['Controlled'] = integr_places['Controlled'].apply(lambda x: f'{x:,}')
 integr_places['Maintained'] = integr_places['Maintained'].apply(lambda x: f'{x:,}')
 integr_places['Integrated'] = integr_places['Integrated'].apply(lambda x: f'{x:,}')
-integr_places['Support'] = integr_places['integration_main_model_agree'].apply(lambda x: f'{x:.0%}')
+integr_places['Support'] = (integr_places['integration_main_model_agree']
+                            .apply(lambda x: f'{x:.0%}'))
 
 lgd_layer = pdk.Layer(
     'GeoJsonLayer',
@@ -158,7 +159,7 @@ r0 = pdk.Deck(layers=[lgd_layer], initial_view_state=view_state, tooltip=tooltip
 st.subheader(f'Integrated Places per LGD')
 st.markdown('Integrated Supply vs. Demand. Demand is from a LucidTalk [survey]'
             f'({survey_link}) of parents in March 2023 and indicates the percentage of '
-            'parents agreeing that integrated education should be the main model. '
+            'parents agreeing that integrated education should be the main model in N.I. '
             'Supply is actual places in 2022/23.')
 
 # Inspect the raw data.
