@@ -40,7 +40,7 @@ data_load_state.text("Data Loaded!")
 # Inspect the raw data.
 view_cols = [
     'name',
-    'postcode',
+    'pcd',
     'management',
     'pupils_total_2022_23',
     'protestant',
