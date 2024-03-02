@@ -32,7 +32,7 @@ def load_visitor_strings(dummy=8):
     return data
 
 # Explain the source of the data and link to it
-st.markdown("This site visualises our FOI results!")
+st.markdown("This site visualises our FOI results.")
 
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
@@ -41,7 +41,7 @@ cef = load_cef()
 cjm = load_cjm()
 hfy = load_hfy()
 visitor_strings = load_visitor_strings()
-data_load_state.text("Data Loaded!")
+data_load_state.text("Data Loaded.")
 
 # Inspect the raw data.
 view_cols = [
@@ -56,7 +56,9 @@ view_cols = [
 
 # Plot data on a map
 st.subheader(f'Visitors to NI primary schools')
-st.markdown(('Map below.'))
+st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
+             'can beb viewed by hovering/clicking on the respective school in '
+             'the map below. Frequency of visits to follow...'))
 
 # Define the layer
 sch_layer = pdk.Layer(
