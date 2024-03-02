@@ -57,7 +57,7 @@ view_cols = [
 # Plot data on a map
 st.subheader(f'Visitors to NI primary schools')
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
-             'can beb viewed by hovering/clicking on the respective school in '
+             'can be viewed by hovering/clicking on the respective school in '
              'the map below. Frequency of visits to follow...'))
 
 # Define the layer
