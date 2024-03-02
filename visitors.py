@@ -55,6 +55,51 @@ view_cols = [
 ]
 
 # Plot data on a map
+st.subheader(f'Visitors to NI primary schools')
+st.markdown(('Map below.'))
+
+# Define the layer
+sch_layer = pdk.Layer(
+    'ScatterplotLayer',
+    visitor_strings,
+    opacity=0.6,
+    stroked=False,
+    get_position='[lon, lat]',
+    get_fill_color='[red, green, blue]',
+    get_radius='radius',
+    radius_min_pixels=2,
+    radius_max_pixels=20,
+    pickable=True
+)
+
+tt_name = '<b>Name:</b><br>{name}<br>'
+tt_visitor_list = '<b>Visitors:</b><br>{display}'
+# tt_manag = '<b>Management:</b> {management}'
+# tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
+# tt_num_protestant = '<b>Protestant:</b> {protestant}'
+# tt_num_catholic = '<b>Catholic:</b> {catholic}'
+# tt_num_other = '<b>Other:</b> {other}'
+# tt_source = '<b>Source:</b> Schools Plus NI'
+
+# Define the tooltip
+tooltip = {
+    'html': '<br>'.join([tt_name, tt_visitor_list]),
+    'style': {
+        'backgroundColor': 'steelblue',
+        'color': 'white',
+        'fontSize': '12px',
+        'padding': '5px',
+        'border': '1px solid white',
+    }
+}
+
+# Create the deck, and show it in Streamlit
+view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
+r = pdk.Deck(layers=[sch_layer], initial_view_state=view_state, tooltip=tooltip)
+st.pydeck_chart(r)
+
+
+# Plot data on a map
 st.subheader(f'Scripture Union')
 st.markdown(('Scripture Union is “an organisation determined to help people encounter God”. '
              'They visited at least 159 primary schools that we surveyed an estimated average '
@@ -231,49 +276,3 @@ tooltip = {
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
 r = pdk.Deck(layers=[sch_layer], initial_view_state=view_state, tooltip=tooltip)
 st.pydeck_chart(r)
-
-
-# Plot data on a map
-st.subheader(f'Visitors to NI primary schools')
-st.markdown(('Map below.'))
-
-# Define the layer
-sch_layer = pdk.Layer(
-    'ScatterplotLayer',
-    visitor_strings,
-    opacity=0.6,
-    stroked=False,
-    get_position='[lon, lat]',
-    get_fill_color='[red, green, blue]',
-    get_radius='radius',
-    radius_min_pixels=2,
-    radius_max_pixels=20,
-    pickable=True
-)
-
-tt_name = '<b>Name:</b><br>{name}<br>'
-tt_visitor_list = '<b>Visitors:</b><br>{display}'
-# tt_manag = '<b>Management:</b> {management}'
-# tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
-# tt_num_protestant = '<b>Protestant:</b> {protestant}'
-# tt_num_catholic = '<b>Catholic:</b> {catholic}'
-# tt_num_other = '<b>Other:</b> {other}'
-# tt_source = '<b>Source:</b> Schools Plus NI'
-
-# Define the tooltip
-tooltip = {
-    'html': '<br>'.join([tt_name, tt_visitor_list]),
-    'style': {
-        'backgroundColor': 'steelblue',
-        'color': 'white',
-        'fontSize': '12px',
-        'padding': '5px',
-        'border': '1px solid white',
-    }
-}
-
-# Create the deck, and show it in Streamlit
-view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
-r = pdk.Deck(layers=[sch_layer], initial_view_state=view_state, tooltip=tooltip)
-st.pydeck_chart(r)
-
