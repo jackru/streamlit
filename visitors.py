@@ -49,9 +49,14 @@ view_cols = [
 ]
 
 # Plot data on a map
-st.subheader(f'Schools visited by Scripture Union')
-st.markdown(('Schools are coloured by management type. Hover over to access pupil '
-             'numbers by self-declared religion.'))
+st.subheader(f'Scripture Union')
+st.markdown(('Scripture Union is “an organisation determined to help people encounter God”. '
+             'They visited at least 159 primary schools that we surveyed an estimated average '
+             'of x times each during the period. SUNI are passionate about making God’s Good '
+             'News known in primary, post primary and special schools through dedicated staff, '
+             'training of local volunteers and resourcing the church.\n\n'
+             'Their aims, beliefs and principles can be found [here]'
+             '(https://www.suni.co.uk/who-we-are/aims-beliefs-principles).'))
 
 if st.checkbox('Show schools data', key='su'):
     st.subheader('Schools data')
@@ -100,9 +105,18 @@ st.pydeck_chart(r)
 
 
 # Plot data on a map
-st.subheader(f'Schools visited by Child Evangelism Fellowship')
-st.markdown(('Schools are coloured by management type. Hover over to access pupil '
-             'numbers by self-declared religion.'))
+st.subheader(f'Child Evangelism Fellowship')
+st.markdown(('Child Evangelism Fellowship is a Bible-centred organisation, whose [purpose]'
+             '(https://www.cefireland.com/what-we-do/) is to evangelise boys and girls with '
+             'the Gospel of the Lord Jesus Christ, to edify (disciple) them in the Word of '
+             'God and to establish them in a local church. They visited at least 121 primary '
+             'schools in Northern Ireland an estimated average of x times each during the '
+             'period.\n\n'
+             'They specialise in training child evangelists, with a [series of courses]'
+             '(https://www.cefonline.com/about/training/tce/) on effective methods of '
+             'evangelism.\n\n'
+             'Their statement of faith can be found [here]'
+             '(https://www.cefonline.com/about/statementoffaith/).'))
 
 if st.checkbox('Show schools data', key='cef'):
     st.subheader('Schools data')
@@ -151,9 +165,21 @@ st.pydeck_chart(r)
 
 
 # Plot data on a map
-st.subheader(f'Schools visited by Crown Jesus Ministries')
-st.markdown(('Schools are coloured by management type. Hover over to access pupil '
-             'numbers by self-declared religion.'))
+st.subheader(f'Crown Jesus Ministries')
+st.markdown(('Crown Jesus Ministries “do evangelism”. Their [KlassKids]'
+             '(https://www.crownjesus.org/klasskids) programme uses '
+             'puppetry to “invade” assemblies with a production that encourages children '
+             'to learn about a Bible story and the teachings of Jesus in a fun, creative '
+             'and relevant way”.\n\nFor S.E.N.D. schools their team has developed specific '
+             'assembly productions and R.E. classes that have been tailored to creatively '
+             'share messages from the Bible using puppets, songs, visual aids, Makaton and '
+             'additional sensory elements.\n\n'
+             'Crown Jesus Ministries visited at least 51 primary schools in Northern '
+             'Ireland an estimated average of x times each during the period. They also '
+             'run [academy](https://www.crownjesus.org/academy) and [school of evangelism]'
+             '(https://www.crownjesus.org/soe) programmes with a focus on youth and kids '
+             'ministry.\n\nTheir statement of faith can be found [here]'
+             '(https://www.crownjesus.org/statement-of-faith).'))
 
 if st.checkbox('Show schools data', key='cjm'):
     st.subheader('Schools data')
@@ -202,9 +228,17 @@ st.pydeck_chart(r)
 
 
 # Plot data on a map
-st.subheader(f'Schools visited by Hope for Youth Ministries')
-st.markdown(('Schools are coloured by management type. Hover over to access pupil '
-             'numbers by self-declared religion.'))
+st.subheader(f'Hope for Youth Ministries')
+st.markdown(('Hope for Youth Ministries claim to visit more than 250 schools across '
+             'Northern Ireland. According to our survey, they visited at least 44 '
+             'schools during the period in question. They deliver school assemblies, '
+             '5-day Bible Clubs and Scripture Union meetings tailored to children, as '
+             'well as producing several [devotional books]'
+             '(https://hopeforyouthministries.org/product-category/devotional-books/), '
+             '[tracts](https://hopeforyouthministries.org/product-category/tracts/) and '
+             'a series of [videos](https://hopeforyouthministries.org/video/).\n\n'
+             'Hope for Youth’s school ministry is explained by their founder in this '
+             '[video](https://youtu.be/j9-Jl7O52kw).'))
 
 if st.checkbox('Show schools data', key='hfy'):
     st.subheader('Schools data')
