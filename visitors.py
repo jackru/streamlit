@@ -234,7 +234,7 @@ st.pydeck_chart(r)
 
 
 # Plot data on a map
-st.subheader(f'Visitor Categories')
+st.subheader(f'Visitors to NI primary schools')
 st.markdown(('Map below.'))
 
 # Define the layer
@@ -252,7 +252,7 @@ sch_layer = pdk.Layer(
 )
 
 tt_name = '<b>Name:</b><br>{name}<br>'
-tt_visitor_list = '<b>Visitors:</b><br>{category}'
+tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
 # tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
 # tt_num_protestant = '<b>Protestant:</b> {protestant}'
