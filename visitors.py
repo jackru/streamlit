@@ -26,6 +26,11 @@ def load_hfy(dummy=8):
     data = pd.read_csv('./hfy.csv')
     return data
 
+@st.cache_data
+def load_visitor_strings(dummy=8):
+    data = pd.read_csv('./visitor_strings.csv')
+    return data
+
 # Explain the source of the data and link to it
 st.markdown("This site visualises our FOI results!")
 
@@ -35,6 +40,7 @@ su = load_su()
 cef = load_cef()
 cjm = load_cjm()
 hfy = load_hfy()
+visitor_strings = load_visitor_strings()
 data_load_state.text("Data Loaded!")
 
 # Inspect the raw data.
@@ -228,26 +234,13 @@ st.pydeck_chart(r)
 
 
 # Plot data on a map
-st.subheader(f'Hope for Youth Ministries')
-st.markdown(('Hope for Youth Ministries claim to visit more than 250 schools across '
-             'Northern Ireland. According to our survey, they visited at least 44 '
-             'schools during the period in question. They deliver school assemblies, '
-             '5-day Bible Clubs and Scripture Union meetings tailored to children, as '
-             'well as producing several [devotional books]'
-             '(https://hopeforyouthministries.org/product-category/devotional-books/), '
-             '[tracts](https://hopeforyouthministries.org/product-category/tracts/) and '
-             'a series of [videos](https://hopeforyouthministries.org/video/).\n\n'
-             'Hope for Youth’s school ministry is explained by their founder in this '
-             '[video](https://youtu.be/j9-Jl7O52kw).'))
-
-if st.checkbox('Show schools data', key='hfy'):
-    st.subheader('Schools data')
-    st.write(hfy[view_cols])
+st.subheader(f'Visitor Categories')
+st.markdown(('Map below.'))
 
 # Define the layer
 sch_layer = pdk.Layer(
     'ScatterplotLayer',
-    hfy,
+    visitor_strings,
     opacity=0.6,
     stroked=False,
     get_position='[lon, lat]',
@@ -258,19 +251,18 @@ sch_layer = pdk.Layer(
     pickable=True
 )
 
-tt_name = '<b>Name:</b> {name}'
-tt_manag = '<b>Management:</b> {management}'
-tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
-tt_num_protestant = '<b>Protestant:</b> {protestant}'
-tt_num_catholic = '<b>Catholic:</b> {catholic}'
-tt_num_other = '<b>Other:</b> {other}'
-tt_source = '<b>Source:</b> Schools Plus NI'
+tt_name = '<b>Name:</b><br>{name}<br>'
+tt_visitor_list = '<b>Visitors:</b><br>{category}'
+# tt_manag = '<b>Management:</b> {management}'
+# tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
+# tt_num_protestant = '<b>Protestant:</b> {protestant}'
+# tt_num_catholic = '<b>Catholic:</b> {catholic}'
+# tt_num_other = '<b>Other:</b> {other}'
+# tt_source = '<b>Source:</b> Schools Plus NI'
 
 # Define the tooltip
 tooltip = {
-    'html': '<br>'.join([tt_name, tt_manag, tt_num_pupils,
-                         tt_num_protestant, tt_num_catholic, tt_num_other,
-                         tt_source]),
+    'html': '<br>'.join([tt_name, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
@@ -284,3 +276,4 @@ tooltip = {
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
 r = pdk.Deck(layers=[sch_layer], initial_view_state=view_state, tooltip=tooltip)
 st.pydeck_chart(r)
+
