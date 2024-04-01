@@ -59,7 +59,8 @@ view_cols = [
 st.subheader(f'Visitors to NI primary schools')
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
-             'the map below. Frequency of visits to follow...'))
+             'the map below. Total frequency of visits is estimated based on information '
+             'provided by schools.'))
 
 # Define the layer
 visitors_layer = pdk.Layer(
