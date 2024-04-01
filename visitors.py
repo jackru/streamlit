@@ -7,28 +7,29 @@ import pydeck as pdk
 st.title('Visitors to NI primary schools')
 
 @st.cache_data
-def load_su(dummy=8):
+def load_su():
     data = pd.read_csv('./su.csv')
     return data
 
 @st.cache_data
-def load_cef(dummy=8):
+def load_cef():
     data = pd.read_csv('./cef.csv')
     return data
 
 @st.cache_data
-def load_cjm(dummy=8):
+def load_cjm():
     data = pd.read_csv('./cjm.csv')
     return data
 
 @st.cache_data
-def load_hfy(dummy=8):
+def load_hfy():
     data = pd.read_csv('./hfy.csv')
     return data
 
 @st.cache_data
-def load_visitor_strings(dummy=8):
-    data = pd.read_csv('./visitor_strings.csv')
+def load_visitor_strings():
+    # data = pd.read_csv('./visitor_strings.csv')
+    data = pd.read_csv('./visitor_strings_freq.csv')
     return data
 
 # Explain the source of the data and link to it
@@ -68,13 +69,14 @@ sch_layer = pdk.Layer(
     stroked=False,
     get_position='[lon, lat]',
     get_fill_color='[red, green, blue]',
-    get_radius='radius',
+    get_radius='radius_freq',
     radius_min_pixels=2,
     radius_max_pixels=20,
     pickable=True
 )
 
 tt_name = '<b>Name:</b><br>{name}<br>'
+tt_total = '<b>Total annual visits (est.): {estimated_total_visits}</b><br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
 # tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
@@ -85,7 +87,7 @@ tt_visitor_list = '<b>Visitors:</b><br>{display}'
 
 # Define the tooltip
 tooltip = {
-    'html': '<br>'.join([tt_name, tt_visitor_list]),
+    'html': '<br>'.join([tt_name, tt_total, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
