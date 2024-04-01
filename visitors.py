@@ -62,7 +62,7 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'the map below. Frequency of visits to follow...'))
 
 # Define the layer
-sch_layer = pdk.Layer(
+visitors_layer = pdk.Layer(
     'ScatterplotLayer',
     visitor_strings,
     opacity=0.6,
@@ -86,7 +86,7 @@ tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_source = '<b>Source:</b> Schools Plus NI'
 
 # Define the tooltip
-tooltip = {
+visitors_tooltip = {
     'html': '<br>'.join([tt_name, tt_total, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
@@ -99,8 +99,8 @@ tooltip = {
 
 # Create the deck, and show it in Streamlit
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
-r = pdk.Deck(layers=[sch_layer], initial_view_state=view_state, tooltip=tooltip)
-st.pydeck_chart(r)
+visitors_deck = pdk.Deck(layers=[visitors_layer], initial_view_state=view_state, tooltip=visitors_tooltip)
+st.pydeck_chart(visitors_deck)
 
 
 # Plot data on a map
