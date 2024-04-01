@@ -60,7 +60,9 @@ st.subheader(f'Visitors to NI primary schools')
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
              'the map below. Total frequency of visits is estimated based on information '
-             'provided by schools.'))
+             'provided by schools. Markers are coloured and sized according to a combination '
+             'of visitor volume and the number of pupils self-designating as "Other" '
+             '(i.e. neither Catholic or Protestant).'))
 
 # Define the layer
 visitors_layer = pdk.Layer(
@@ -78,7 +80,8 @@ visitors_layer = pdk.Layer(
 
 tt_name = '<b>Name:</b> {name}<br>'
 tt_total = '<b>Total annual visits (est.):</b> {estimated_total_visits}'
-tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23}<br>'
+tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23}'
+tt_no_withdrawn = '<b>Pupils withdrawn from RE/CW:</b> {no_withdrawn}<br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
 # tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
@@ -88,7 +91,7 @@ tt_visitor_list = '<b>Visitors:</b><br>{display}'
 
 # Define the tooltip
 visitors_tooltip = {
-    'html': '<br>'.join([tt_name, tt_total, tt_num_other, tt_visitor_list]),
+    'html': '<br>'.join([tt_name, tt_total, tt_num_other, tt_no_withdrawn, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
