@@ -76,19 +76,19 @@ visitors_layer = pdk.Layer(
     pickable=True
 )
 
-tt_name = '<b>Name:</b><br>{name}<br>'
-tt_total = '<b>Total annual visits (est.): {estimated_total_visits}</b><br>'
+tt_name = '<b>Name:</b> {name}<br>'
+tt_total = '<b>Total annual visits (est.):</b> {estimated_total_visits}'
+tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23}<br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
 # tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
 # tt_num_protestant = '<b>Protestant:</b> {protestant}'
 # tt_num_catholic = '<b>Catholic:</b> {catholic}'
-# tt_num_other = '<b>Other:</b> {other}'
 # tt_source = '<b>Source:</b> Schools Plus NI'
 
 # Define the tooltip
 visitors_tooltip = {
-    'html': '<br>'.join([tt_name, tt_total, tt_visitor_list]),
+    'html': '<br>'.join([tt_name, tt_total, tt_num_other, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
