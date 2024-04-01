@@ -80,7 +80,7 @@ visitors_layer = pdk.Layer(
 
 tt_name = '<b>Name:</b> {name}<br>'
 tt_total = '<b>Total annual visits (est.):</b> {estimated_total_visits}'
-tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23}'
+tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23} ({pct_other})'
 tt_no_withdrawn = '<b>Pupils withdrawn from RE/CW:</b> {no_withdrawn}<br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
