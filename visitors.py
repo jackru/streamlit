@@ -79,9 +79,10 @@ visitors_layer = pdk.Layer(
 )
 
 tt_name = '<b>Name:</b> {name}<br>'
-tt_total = '<b>Total annual visits (est.):</b> {estimated_total_visits}'
-tt_num_other = '<b>Pupils designated "Other":</b> {other}/{pupils_total_2022_23} ({pct_other})'
-tt_no_withdrawn = '<b>Pupils withdrawn from RE/CW:</b> {no_withdrawn}<br>'
+tt_total = '<b>Total annual visits (est):</b>  {estimated_total_visits}<br>'
+tt_num_other = '<b>Pupils designated "Other":</b>  {other}/{pupils_total_2022_23} ({pct_other})'
+tt_num_not_christian = '<b>...of which non-Christian:</b>  {estimated_non_christian_string}'
+tt_no_withdrawn = '<b># withdrawn from RE or CW:</b> {no_withdrawn}<br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
 # tt_manag = '<b>Management:</b> {management}'
 # tt_num_pupils = '<b>Total pupils:</b> {pupils_total_2022_23}'
@@ -91,7 +92,7 @@ tt_visitor_list = '<b>Visitors:</b><br>{display}'
 
 # Define the tooltip
 visitors_tooltip = {
-    'html': '<br>'.join([tt_name, tt_total, tt_num_other, tt_no_withdrawn, tt_visitor_list]),
+    'html': '<br>'.join([tt_name, tt_total, tt_num_other, tt_num_not_christian, tt_no_withdrawn, tt_visitor_list]),
     'style': {
         'backgroundColor': 'steelblue',
         'color': 'white',
