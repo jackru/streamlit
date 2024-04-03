@@ -61,8 +61,7 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
              'the map below. Total frequency of visits is estimated based on information '
              'provided by schools. Markers are coloured and sized according to a combination '
-             'of visitor volume and the number of pupils self-designating as "Other" '
-             '(i.e. neither Catholic or Protestant).'))
+             'of visitor volume and the number of non-Christian pupils.'))
 
 # Define the layer
 visitors_layer = pdk.Layer(
