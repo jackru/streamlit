@@ -64,7 +64,9 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'the map below. Total frequency of visits is estimated based on information '
              'provided by schools. Markers are coloured and sized according to a combination '
              'of visitor volume and the number of non-Christian pupils.'
-             '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses.'))
+             '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses. '
+             'Latest responses can be viewed by visiting [WHatDoTheyKnow.com](https://www.whatdotheyknow.com/list/successful?utf8=%E2%9C%93&query=religious+practices+in+NI+primary+schools) '
+             'and searching for your school.'))
 
 # Define the layer
 visitors_layer = pdk.Layer(
