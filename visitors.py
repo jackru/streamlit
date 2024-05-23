@@ -4,6 +4,8 @@ import numpy as np
 import geopandas as gpd
 import pydeck as pdk
 
+# st.set_page_config(layout="wide")
+
 st.title('Visitors to NI primary schools')
 
 @st.cache_data
@@ -33,7 +35,7 @@ def load_visitor_strings():
     return data
 
 # Explain the source of the data and link to it
-st.markdown("This site visualises our FOI results.")
+st.markdown("This site visualises the results of Parents for Inclusive Education's FOI request.")
 
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
@@ -61,7 +63,8 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
              'the map below. Total frequency of visits is estimated based on information '
              'provided by schools. Markers are coloured and sized according to a combination '
-             'of visitor volume and the number of non-Christian pupils.'))
+             'of visitor volume and the number of non-Christian pupils.'
+             '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses.'))
 
 # Define the layer
 visitors_layer = pdk.Layer(
@@ -104,7 +107,13 @@ visitors_tooltip = {
 
 # Create the deck, and show it in Streamlit
 view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
-visitors_deck = pdk.Deck(layers=[visitors_layer], initial_view_state=view_state, tooltip=visitors_tooltip)
+visitors_deck = pdk.Deck(
+    layers=[visitors_layer],
+    initial_view_state=view_state,
+    tooltip=visitors_tooltip,
+    height=800,
+)
+
 st.pydeck_chart(visitors_deck)
 
 
