@@ -8,25 +8,25 @@ import pydeck as pdk
 
 st.title('Visitors to NI primary schools')
 
-@st.cache_data
-def load_su():
-    data = pd.read_csv('./su.csv')
-    return data
+# @st.cache_data
+# def load_su():
+#     data = pd.read_csv('./su.csv')
+#     return data
 
-@st.cache_data
-def load_cef():
-    data = pd.read_csv('./cef.csv')
-    return data
+# @st.cache_data
+# def load_cef():
+#     data = pd.read_csv('./cef.csv')
+#     return data
 
-@st.cache_data
-def load_cjm():
-    data = pd.read_csv('./cjm.csv')
-    return data
+# @st.cache_data
+# def load_cjm():
+#     data = pd.read_csv('./cjm.csv')
+#     return data
 
-@st.cache_data
-def load_hfy():
-    data = pd.read_csv('./hfy.csv')
-    return data
+# @st.cache_data
+# def load_hfy():
+#     data = pd.read_csv('./hfy.csv')
+#     return data
 
 @st.cache_data
 def load_visitor_strings():
@@ -35,16 +35,18 @@ def load_visitor_strings():
     return data
 
 # Explain the source of the data and link to it
-st.markdown("This site visualises the results of Parents for Inclusive Education's FOI request.")
+st.markdown("This site visualises the results of Parents for Inclusive Education's FOI request. "
+            'Their report - On A Mission - containing the aggregated findings from this request can '
+            'be found on their [website](https://www.parentsforinclusiveeducationni.org/).')
 
 # Create a text element and let the reader know the data is loading.
-data_load_state = st.text('Loading data...')
-su = load_su()
-cef = load_cef()
-cjm = load_cjm()
-hfy = load_hfy()
+# data_load_state = st.text('Loading data...')
+# su = load_su()
+# cef = load_cef()
+# cjm = load_cjm()
+# hfy = load_hfy()
 visitor_strings = load_visitor_strings()
-data_load_state.text("Data Loaded.")
+# data_load_state.text("Data Loaded.")
 
 # Inspect the raw data.
 view_cols = [
@@ -58,14 +60,15 @@ view_cols = [
 ]
 
 # Plot data on a map
-st.subheader(f'Visitors to NI primary schools')
+# st.subheader(f'Visitors to NI primary schools')
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
-             'the map below. Total frequency of visits is estimated based on information '
+             'the map below. School population data is from [Schools Plus NI](https://www.education-ni.gov.uk/services/schools-plus). '
+             'Total frequency of visits is estimated based on information '
              'provided by schools. Markers are coloured and sized according to a combination '
              'of visitor volume and the number of non-Christian pupils.'
              '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses. '
-             'Latest responses can be viewed by visiting [WHatDoTheyKnow.com](https://www.whatdotheyknow.com/list/successful?utf8=%E2%9C%93&query=religious+practices+in+NI+primary+schools) '
+             'Latest responses can be viewed by visiting [WhatDoTheyKnow.com](https://www.whatdotheyknow.com/list/successful?utf8=%E2%9C%93&query=religious+practices+in+NI+primary+schools) '
              'and searching for your school.'))
 
 # Define the layer
