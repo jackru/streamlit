@@ -4,7 +4,8 @@ import numpy as np
 import geopandas as gpd
 import pydeck as pdk
 
-st.set_page_config(page_title='Religious Visitors to Northern Irish Primary Schools')
+st.set_page_config(page_title='Religious Visitors to Northern Irish Primary Schools',
+                   page_icon='https://storage.mlcdn.com/account_image/293832/H3etpcTDIeoZhChu7cYp9RkbGecqwFM8aYZLhbWb.png')
 
 meta_tags = """
 <meta name="keywords" content="Northern Ireland, primary schools,
