@@ -5,7 +5,6 @@ import geopandas as gpd
 import pydeck as pdk
 
 st.set_page_config(page_title="Visitors to NI primary schools")
-t.set_page_config(page_title="Visitors to NI primary schools")
 
 st.title('Visitors to NI primary schools')
 
