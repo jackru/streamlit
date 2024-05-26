@@ -7,15 +7,15 @@ import pydeck as pdk
 st.set_page_config(page_title='Religious Visitors to Northern Irish Primary Schools',
                    page_icon='https://storage.mlcdn.com/account_image/293832/H3etpcTDIeoZhChu7cYp9RkbGecqwFM8aYZLhbWb.png')
 
-meta_tags = """
-<meta name="keywords" content="Northern Ireland, primary schools,
-parents for inclusive education, PfIE, PfIE NI, indoctrination,
-religious visitors, religious practices, religious education, RE, CW,
-collective worship, Scripture Union, Child Evangelism Fellowship,
-Crown Jesus Ministries, Hope for Youth Ministries">
-"""
+# meta_tags = """
+# <meta name="keywords" content="Northern Ireland, primary schools,
+# parents for inclusive education, PfIE, PfIE NI, indoctrination,
+# religious visitors, religious practices, religious education, RE, CW,
+# collective worship, Scripture Union, Child Evangelism Fellowship,
+# Crown Jesus Ministries, Hope for Youth Ministries">
+# """
 
-st.markdown(meta_tags, unsafe_allow_html=True)
+# st.markdown(meta_tags, unsafe_allow_html=True)
 
 st.header('Religious Visitors to Northern Irish Primary Schools')
 
