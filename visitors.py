@@ -4,7 +4,7 @@ import numpy as np
 import geopandas as gpd
 import pydeck as pdk
 
-st.set_page_config(page_title="Religious Visitors to NI Primary Schools")
+st.set_page_config(page_title='Religious Visitors to Northern Irish Primary Schools')
 
 st.header('Religious Visitors to Northern Irish Primary Schools')
 
