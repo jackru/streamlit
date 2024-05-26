@@ -6,6 +6,16 @@ import pydeck as pdk
 
 st.set_page_config(page_title='Religious Visitors to Northern Irish Primary Schools')
 
+meta_tags = """
+<meta name="keywords" content="Northern Ireland, primary schools,
+parents for inclusive education, PfIE, PfIE NI, indoctrination,
+religious visitors, religious practices, religious education, RE, CW,
+collective worship, Scripture Union, Child Evangelism Fellowship,
+Crown Jesus Ministries, Hope for Youth Ministries">
+"""
+
+st.markdown(meta_tags, unsafe_allow_html=True)
+
 st.header('Religious Visitors to Northern Irish Primary Schools')
 
 # @st.cache_data
