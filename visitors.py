@@ -47,7 +47,8 @@ def load_visitor_strings():
 
 # Explain the source of the data and link to it
 st.markdown("This site visualises the results of Parents for Inclusive Education's FOI request. "
-            'Their report - On A Mission - containing the aggregated findings from this request can '
+            'Their report - [On A Mission](https://heyzine.com/flip-book/f1a10e8ea1.html) - '
+            'containing the aggregated findings from this request can '
             'be found on their [website](https://www.parentsforinclusiveeducationni.org/).')
 
 # Create a text element and let the reader know the data is loading.
