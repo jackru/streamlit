@@ -14,6 +14,7 @@ st.header('Religious Visitors to Northern Irish Primary Schools')
 @st.cache_data
 def load_visitor_strings():
     data = pd.read_csv('./visitor_strings_freq.csv')
+    data.loc[data['display'] == 'DID NOT RESPOND TO SURVEY', 'display'] = 'NO RESPONSE AS OF 2024-03-27'
     return data
 
 # Explain the source of the data and link to it
