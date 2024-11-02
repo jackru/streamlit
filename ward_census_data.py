@@ -20,7 +20,8 @@ def load_ward_data():
 # Explain the source of the data and link to it
 st.markdown("This map visualises the religious mix of Northern Ireland's population by age and ward. "
             "Wards are coloured by the percentage of the population in each age band who self-declared as "
-            "having no religion. The greater the percentage of heathens, the hotter the hellfire!")
+            "having no religion."
+            )
 
 gdf = load_ward_data()
 age_band = st.selectbox(
