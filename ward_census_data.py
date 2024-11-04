@@ -71,7 +71,7 @@ st.pydeck_chart(r)
 
 
 # Explain the source of the data and link to it
-st.markdown("This map visualises the change in religious categories between the 2011 and 2021 censuses. "
+st.markdown("The bottom map visualises the change in religious categories between the 2011 and 2021 censuses. "
             "This data is for all age bands. Wards are coloured by the increase in the percentage of "
             "the population identifying as having no religion."
             )
