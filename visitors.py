@@ -39,7 +39,7 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'and searching for your school.'
              ))
 
-selected_school = st.selectbox('Select a school:', sorted(visitor_strings['name'].unique()), index=None,
+selected_school = st.selectbox('Select a school or navigate using the map:', sorted(visitor_strings['name'].unique()), index=None,
                                placeholder="Start typing to search...")    
 
 if selected_school:
@@ -84,7 +84,7 @@ visitors_tooltip = {
 }
 
 if selected_school:
-    view_state = pdk.ViewState(latitude=lat - 0.03, longitude=long + 0.04, zoom=11, bearing=0, pitch=0)
+    view_state = pdk.ViewState(latitude=lat - 0.03, longitude=long + 0.045, zoom=11, bearing=0, pitch=0)
     this_school_layer = pdk.Layer(
         'ScatterplotLayer',
         visitor_strings[visitor_strings['name'] == selected_school],
