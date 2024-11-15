@@ -93,8 +93,8 @@ if selected_school:
         filled=False,
         get_position='[lon, lat]',
         get_line_color='[255, 255, 255]',
-        get_radius='radius_freq + 2',
-        line_width_min_pixels=2,
+        get_radius='radius_freq + 4',
+        line_width_min_pixels=3,
         radius_min_pixels=2 + 2,
         radius_max_pixels=20 + 2,
         pickable=True
