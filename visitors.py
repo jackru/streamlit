@@ -39,6 +39,15 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'and searching for your school.'
              ))
 
+selected_school = st.selectbox('Select a school:', sorted(visitor_strings['name'].unique()), index=None,
+                               placeholder="Start typing to search...")    
+
+if selected_school:
+    lat, long = visitor_strings.loc[visitor_strings['name'] == selected_school, ['lat', 'lon']].values[0]
+else:
+    lat, long = None, None
+
+
 # Define the layer
 visitors_layer = pdk.Layer(
     'ScatterplotLayer',
@@ -74,10 +83,30 @@ visitors_tooltip = {
     }
 }
 
+if selected_school:
+    view_state = pdk.ViewState(latitude=lat - 0.03, longitude=long + 0.04, zoom=11, bearing=0, pitch=0)
+    this_school_layer = pdk.Layer(
+        'ScatterplotLayer',
+        visitor_strings[visitor_strings['name'] == selected_school],
+        opacity=0.6,
+        stroked=True,
+        filled=False,
+        get_position='[lon, lat]',
+        get_line_color='[255, 255, 255]',
+        get_radius='radius_freq + 2',
+        line_width_min_pixels=2,
+        radius_min_pixels=2 + 2,
+        radius_max_pixels=20 + 2,
+        pickable=True
+    )
+    layers = [visitors_layer, this_school_layer]
+else:
+    view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
+    layers = [visitors_layer]
+
 # Create the deck, and show it in Streamlit
-view_state = pdk.ViewState(latitude=54.7, longitude=-6.7, zoom=7, bearing=0, pitch=0)
 visitors_deck = pdk.Deck(
-    layers=[visitors_layer],
+    layers=layers,
     initial_view_state=view_state,
     tooltip=visitors_tooltip,
     height=800,
