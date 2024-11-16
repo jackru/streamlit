@@ -30,13 +30,13 @@ visitor_strings = load_visitor_strings()
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
              'the map below. School population data is from [Schools Plus NI](https://www.education-ni.gov.uk/services/schools-plus). '
-             'Total frequency of visits is estimated based on information '
+             'Frequency of visits is estimated based on information '
              'provided by schools. '
             #  'Markers are coloured and sized according to a combination '
             #  'of visitor volume and the number of non-Christian pupils.'
             #  '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses. '
-             'Individual school responses can be viewed by visiting [WhatDoTheyKnow.com](https://www.whatdotheyknow.com/list/successful?utf8=%E2%9C%93&query=religious+practices+in+NI+primary+schools) '
-             'and searching for your school.'
+            #  'Individual school responses can be viewed by visiting [WhatDoTheyKnow.com](https://www.whatdotheyknow.com/list/successful?utf8=%E2%9C%93&query=religious+practices+in+NI+primary+schools) '
+            #  'and searching for your school.'
              ))
 
 selected_school = st.selectbox('Select a school or navigate using the map:', sorted(visitor_strings['name'].unique()), index=None,
@@ -44,6 +44,8 @@ selected_school = st.selectbox('Select a school or navigate using the map:', sor
 
 if selected_school:
     lat, long = visitor_strings.loc[visitor_strings['name'] == selected_school, ['lat', 'lon']].values[0]
+    url = visitor_strings.loc[visitor_strings['name'] == selected_school, 'url'].values[0]
+    st.markdown(f"View the school's response to our FOI request [here]({url}).")
 else:
     lat, long = None, None
 
