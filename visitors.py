@@ -45,7 +45,7 @@ selected_school = st.selectbox('Select a school or navigate using the map:', sor
 if selected_school:
     lat, long = visitor_strings.loc[visitor_strings['name'] == selected_school, ['lat', 'lon']].values[0]
     url = visitor_strings.loc[visitor_strings['name'] == selected_school, 'url'].values[0]
-    st.markdown(f"View the school's response to our FOI request [here]({url}).")
+    st.markdown(f"View {selected_school}'s response to our FOI request [here]({url}).")
 else:
     lat, long = None, None
 
