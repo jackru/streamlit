@@ -118,7 +118,7 @@ visitors_deck = pdk.Deck(
 
 st.pydeck_chart(visitors_deck)
 
-st.subheader("Population estimation methodology", divider="gray")
+st.subheader("Population estimation notes", divider="gray")
 
 st.markdown("School population figures by granular religion categories are from a "
             "custom data request to the DE. This data can be downloaded using the "
