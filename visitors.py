@@ -32,7 +32,7 @@ st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'the map below. Frequency of visits is estimated based on information '
              'provided by schools. School population data is from [Schools Plus NI]'
              '(https://www.education-ni.gov.uk/services/schools-plus) for the 2024/25 school year. '
-             'Estimated numbers are explained in the notes below the map. '
+             'Population ranges are explained in the notes below the map. '
 
             #  'Markers are coloured and sized according to a combination '
             #  'of visitor volume and the number of non-Christian pupils.'
@@ -117,3 +117,23 @@ visitors_deck = pdk.Deck(
 )
 
 st.pydeck_chart(visitors_deck)
+
+st.subheader("Population estimation methodology", divider="gray")
+
+st.markdown("School population figures by granular religion categories are from a "
+            "custom data request to the DE. This data can be downloaded using the "
+            "button below. The DE redacts small populations for data protection - the "
+            "population estimates presented here respect data privacy while giving "
+            "insight into the relevant population ranges. Large ranges for the non-"
+            "Christian populations are mostly due to schools having large numbers "
+            "of 'unclassified' pupils within the 'Other' population: the lower ends "
+            "of these ranges assume all these pupils are Christian, the upper ends "
+            "assume that none of them are.")
+
+with open("Granular Religion Statistics SUPPRESSED 2425.xlsx", "rb") as file:
+    st.download_button(
+        label="Download granular school population data",
+        data=file,
+        file_name="Granular Religion Statistics SUPPRESSED 2425.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
