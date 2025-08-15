@@ -12,7 +12,7 @@ st.header('Religious Visitors to Northern Irish Primary Schools')
 
 @st.cache_data
 def load_visitor_strings():
-    data = pd.read_csv('./visitor_strings_freq.csv')
+    data = pd.read_csv('./visitor_strings_freq_updated.csv') # changed 15.08.25
     data.loc[data['display'] == 'DID NOT RESPOND TO SURVEY', 'display'] = 'NO RESPONSE AS OF 2024-03-27'
     return data
 
@@ -29,9 +29,11 @@ visitor_strings = load_visitor_strings()
 # Plot data on a map
 st.markdown(('All visitors to schools between 6th Nov 2022 and 5th Nov 2023 '
              'can be viewed by hovering/clicking on the respective school in '
-             'the map below. School population data is from [Schools Plus NI](https://www.education-ni.gov.uk/services/schools-plus). '
-             'Frequency of visits is estimated based on information '
-             'provided by schools. '
+             'the map below. Frequency of visits is estimated based on information '
+             'provided by schools. School population data is from [Schools Plus NI]'
+             '(https://www.education-ni.gov.uk/services/schools-plus) for the 2024/25 school year. '
+             'Estimated numbers are explained in the notes below the map. '
+
             #  'Markers are coloured and sized according to a combination '
             #  'of visitor volume and the number of non-Christian pupils.'
             #  '\n\nNB: Data shown includes responses as of 2024-03-27 - this map will be updated shortly with the latest responses. '
@@ -66,8 +68,8 @@ visitors_layer = pdk.Layer(
 
 tt_name = '<b>Name:</b> {name}<br>'
 tt_total = '<b>Total annual visits (est):</b> {estimated_total_visits}<br>'
-tt_pupils = '<b>Total pupils in 2022/2023:</b> {pupils_total_2022_23}'
-tt_num_other = '<b>Pupils designated "Other":</b> {other}'
+tt_pupils = '<b>Total pupils in 2024/2025:</b> {pupils_total_2024_25}' # changed 15.08.25
+tt_num_other = '<b>Pupils designated "Other":</b> {other_string}' # changed 15.08.25
 tt_num_not_christian = '<b>...of which non-Christian:</b> {estimated_non_christian_string}'
 tt_no_withdrawn = '<b># withdrawn from RE or CW:</b> {no_withdrawn}<br>'
 tt_visitor_list = '<b>Visitors:</b><br>{display}'
