@@ -122,13 +122,7 @@ st.subheader("Population estimation methodology", divider="gray")
 
 st.markdown("School population figures by granular religion categories are from a "
             "custom data request to the DE. This data can be downloaded using the "
-            "button below. The DE redacts small populations for data protection - the "
-            "population estimates presented here respect data privacy while giving "
-            "insight into the relevant population ranges. Large ranges for the non-"
-            "Christian populations are mostly due to schools having large numbers "
-            "of 'unclassified' pupils within the 'Other' population: the lower ends "
-            "of these ranges assume all these pupils are Christian, the upper ends "
-            "assume that none of them are.")
+            "button below.")
 
 with open("Granular Religion Statistics SUPPRESSED 2425.xlsx", "rb") as file:
     st.download_button(
@@ -137,3 +131,11 @@ with open("Granular Religion Statistics SUPPRESSED 2425.xlsx", "rb") as file:
         file_name="Granular Religion Statistics SUPPRESSED 2425.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     )
+
+st.markdown("The DE redacts small populations for data protection - the "
+            "population estimates presented here respect data privacy while giving "
+            "estimates of the relevant population ranges. Large ranges for the non-"
+            "Christian populations are mostly due to schools having large numbers "
+            "of 'unclassified' pupils within the 'Other' population: the lower ends "
+            "of these ranges assume all these pupils are Christian, the upper ends "
+            "assume that none of them are.")
