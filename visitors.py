@@ -134,7 +134,7 @@ with open("Granular Religion Statistics SUPPRESSED 2425.xlsx", "rb") as file:
 
 st.markdown("The DE redacts small populations for data protection - the "
             "population estimates presented here respect data privacy while giving "
-            "estimates of the relevant population ranges. Large ranges for the non-"
+            "estimates of the relevant population ranges. Wide ranges for the non-"
             "Christian populations are mostly due to schools having large numbers "
             "of 'unclassified' pupils within the 'Other' population: the lower ends "
             "of these ranges assume all these pupils are Christian, the upper ends "
