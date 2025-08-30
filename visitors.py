@@ -72,7 +72,7 @@ tt_pupils = '<b>Total pupils in 2024/2025:</b> {pupils_total_2024_25}' # changed
 tt_num_other = '<b>Pupils designated "Other":</b> {other_string}' # changed 15.08.25
 tt_num_not_christian = '<b>...of which non-Christian:</b> {estimated_non_christian_string}'
 tt_no_withdrawn = '<b># withdrawn from RE or CW:</b> {no_withdrawn}<br>'
-tt_visitor_list = '<b>Visitors:</b><br>{display}'
+tt_visitor_list = '<b>Visitors (Nov 22 - Nov 23):</b><br>{display}'
 
 
 # Define the tooltip
